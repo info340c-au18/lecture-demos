@@ -1,0 +1,47 @@
+1) Link in the framework
+Go to Bootstrap website and grab the link code. Should go in the <head> </head> section.
+
+It provides predefined CSS rules so you don't have to write all yourself every time.
+
+For the project, you'll still need to write some of your own, even if you use bootstrap. Show that you can do it.
+
+Bootstrap is the oldest and most popular css framework. That doesn't mean its the best, but its good. tested and familiar.
+
+Notice that bootstrap is going through a CDN
+
+Paste the url into the browser
+Now delete the "min" and show how it reads just like any css file.
+
+Scroll down and notice how there are @media queries.
+
+Bootstrap is responsive. This is one of the things that made it so popular.
+
+It's just a style sheet.
+
+2) Utility Classes
+
+Change the paragraph to say <p class="lead">
+Then <p class="lead text-danger d-md-block d-none">
+
+Now go look through the Bootstrap documentation to show examples
+
+
+3) Response utility classes
+
+The most common class is the container
+
+Add it to the <body> so it's <body class="container">
+
+This adds space, and it's responsive based on the size of the display. Resize the browser to show
+Notice how the margin changes...It's got the breakpoints already cooked in.
+
+Containers are response ready
+
+4) display utilities
+classes are named with the this format:
+
+
+
+
+
+

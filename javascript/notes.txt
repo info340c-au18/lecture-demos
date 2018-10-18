@@ -1,0 +1,33 @@
+poll everywhere
+slides
+get lecture repo
+
+terminal to the lecture directory
+live-server
+
+bring up the developer tools in chrome, console
+
+Slide 1
+There are 3 languages we are learning in this class: HTML, CSS and JavaScript
+It might seem like React is a 4th language, but it's still javascript
+
+java script allows us to have interactivity on the page
+Hover is about the most interactive thing we can get with basic HTML
+
+Java and Javascript are not the same. They really have nothing to do with each other. JavaScript was named with "Java" in the title as a marketing ploy.
+
+Java Script is officially an implementation of the ECMAScript specification. 
+
+It's labeled with the "ES" prefix with it's versioning. ES5 is Java5.
+
+This class is focused on ES5. It's supported by all modern browsers. 
+
+2 ways of executing code written in javascript:
+1) in the browser
+2) on the command line with node.js
+
+I'll be demoing within the browser
+
+You include the <script> tag to include javascript
+It's possible to embed script directly within the tag, but not recommended and generally used for quick tests.
+

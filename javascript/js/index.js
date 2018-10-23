@@ -10,7 +10,15 @@ console.log("hello back to you");
 // }
 
 // console.log(sayHello)
+// <!-- assign array to variable -->
+let myArray = ['a','b','c'];
 
+typeof myArray //=> 'object'
+console.log(typeof myArray);
+let other = myArray;
+
+// <!-- access value in other -->
+console.log( other[1] ); 
 
 //takes in TWO callback functions!
 function doTogether(firstCallback, secondCallback){
@@ -28,26 +36,26 @@ function rubBelly() {
 }
 
 //pass in the callbacks to do them together
-doTogether(rubBelly(), patHead);
+doTogether(rubBelly, patHead);
 
 
 
-for(item of array){
-    console.log(item)
+for(item of myArray){
+    console.log(item);
 }
 
 let sum = 0
-array.forEach(function(n){
+myArray.forEach(function(n){
     sum = sum + n
 });
 
 
 
-array.forEach(function(n, idx){
-    array[idx] = n*n
+myArray.forEach(function(n, idx){
+    myArray[idx] = n*n
 });
 
-array = array.map(function(n) {
+myArray = myArray.map(function(n) {
     return n*n
 })
 
@@ -55,6 +63,6 @@ let add = function(total, next){
     return total+next;
 }
 
-array.reduce(function(total, next){
+myArray.reduce(function(total, next){
     return total+next;
 }, 5)

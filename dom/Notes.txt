@@ -67,13 +67,107 @@ Buttons should be big enough on a small screen.
 Use the aria-label stuff to handle when you dynamically alter the DOM so that a screen reader can know
 Look through the JavaScript Style requirements link
 
+SLIDE 4
+
+SLIDE 5
+
+SlIDE 6
+
+SLIDE 7
+
+The DOM is an API with with the browsers interact
+
+"document" is the object. we call methods off document object.
+
+.querySelector(cssSelector) is easier than .getelement both of these are available off of the document object.
+
+You use put in the same css Selector syntax with.querySelector as we've already been using for CSS selectors
+
+SLIDE 8
+
+Basic example of how this works:
+First you need a reference to the element
+
+You can get the text of an element with the .textContent method
+
+You can assign a new value to the element, simpy by assigning 
+elem.textContent="this is different content!";
+
+You use the .innerHTML method to add styles to the text.
+
+Be careful when using .innerHTLM. If the user is providing the content here, it's a place where script could be injected.
+
+Note that the HTML file is not changed. 
+
+What is happening is that the script is loaded after the HTML has been rendered and the script alters the DOM in memory and 
+the browser shows the modified DOM
+
+SLIDE 9 
+Demo Example 1
+First we use the 'h1' as our querySelector parameter to get a reference theH1 to the element
+
+we can also grab a paragraph within the header 
+
+And update the HTML (formatting) by calling subtitle.innerHTLM = subtitle.textContent + "<em>Prof Carlson</em>"
+
+SLIDE 10
+Demo Example 2
+Change an attribute
+Not every property allows you to change a property in this way. 
+
+SLIDE 11
+Example 3
+Change a Style 
+
+We use the classList.add to add additional styles. You can remove too.
 
 
-.querySelector is easier than .getelement both of these are available off of the document object.
-Joel uses querySelector for consistency and it's probably most powerful
+SLIDE 12
+Example 4
+Creating a new element
+First we create, then we set the innerHTML by assigning
+then we add to the appropriate place in the DOM
+Here we find the UL and append the newLi to the end of the classList
+
+Again be careful using .innerHTML()
+
+SLIDE 13
+Use Java function to add items
+
+Then call the function;
 
 
 
+SLIDE 14
+Now you can iterate and quickly add items without typing a bunch of HTML
 
+
+
+SLIDE 15
+Example 6
+
+addEventListener(param1, param2)
+
+First parameter is the kind of event (click, keypress, blah blah blah)
+Second parameter is the callback function
+
+Here we're watching the button
+
+
+SLIDE 16
+Example 7
+
+Keeping state as we toggle back and forth
+
+Neet a variable (isPuppy) to keep track of what's currently displaying
+
+Note here we're watching the click on the image.
+
+For the project ou want to have at least 2 items that interact with a eventlistener and you need to keep state.
+
+
+HTML does have the "OnClick" method. Don't use it. Stick with the event addEventListener
+
+Keep your interaction in your java file. It's cleaner. Easier to debug. 
 
 

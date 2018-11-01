@@ -1,0 +1,151 @@
+Get lecture demo repo on github
+slides.com
+bring up visual code
+
+Administrative stuff:
+Grading is really slow. Still shooting for Friday, but it might slip to saturday.
+
+By end of today we will have covered everything you need for stage 2.
+
+One week from today we will start react. This will be a different way of doing things.
+Perhaps better to be completely done with stage2 assignment, but will give until next
+Sunday to complete.
+
+
+Slide 2
+Any questions about things from chapter 14 or earlier?
+
+Slide 3
+
+AJAX demo
+
+Slide 4
+HTML Forms
+But first, let's talk about HTML Forms...
+
+This is a simple form on the demo screen
+
+There's an input element
+There's a button to submit
+
+Slide 5
+When you click submit, the browser sends out an http request
+
+In this example we are using "method=get" could use post
+
+Get adds parameters to the query string
+
+The Action attribute provides the URI
+
+If we go to live server, you can see what is on the query string ... react and stars are added as parameters
+
+SLIDE 6
+AJAX
+Created by Microsoft in the 90s for it's email. GMail and others also adopted and it has become a standard.
+
+Even though the acronym says XML, it sends back json now
+
+SLIDE 7
+
+XML is a syntax  of structured data. You can define your own tags
+
+Talk about the TAXSaver use of XML
+
+HTML is a subset of XML
+
+SLIDE 8
+XML is wordy and awkward
+JSON is smaller, easer to parse. 
+It's a collection of key value objects
+
+SLIDE 9
+AJAJ never took off. But that's really what it is.
+
+
+AJAX is a technique for having code (javascript) send the http request rather than the user
+
+SLIDE 10
+To do this (in this form example) we have to intercept and event from happening... more on that in a second
+
+SLIDE 11
+Example code where we are intercepting the event with our own from.
+
+Now that we've prevented the form from doing what it normally would do we can make the http request through javascript
+
+SLIDE 12
+AJAX requests are built on browser provided xmlhttprequest, but we don't do this. It's too
+complicated. 
+
+SLIDE 13
+
+We use the fetch() method which is available in the DOM's API on modern browsers.
+
+Look at the caniuse site 
+
+For those browsers that don't support fetch(), we can use polyfill that replicates the api for older
+browsers
+
+You have to include this library in your html file like other libraries
+
+Here's a github repo for window.fetch (on the slide)
+
+Grab the library from a CDN
+
+All you have to do is include the script file and it will work because the script is there. It 
+defines fetch() for us that works on non-supported browswers.
+
+SLIDE 14
+AJAX requests are asynchronous... 
+At some point in the future the response comes back.
+The request is sent. But it doesn't return the data. Instead it returns a "promise".
+
+A promise is an IOU
+
+SLIDE 15
+When the promise if fulfilled, we have a callback function that can be used with the .then method
+
+You provide the call back with the line of code
+promise.then(successCallback, rejectCallback)
+
+where the second parameter is optional
+
+
+
+SLIDE 16
+
+But wait... the return to the callback is still not actually the data.
+
+Why? because the return is actually the response
+
+So we need to get the data using response.json()
+
+To make things more complicated, response.json() also does not directly return the data... it also returns a promise
+Why? because it's also an asynchronous method... it takes time for the json file to be created
+
+
+SLIDE 17
+Returning Promises
+
+So to handle this, we have to provide another callback function for the 2nd Promises
+Again we do this with the line
+
+SecondPromise.then(function(secondData))
+
+In this slide (17), the upper function returns a NewPromise which is the "secondData" parameter passed to the outerPromise.then callback
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

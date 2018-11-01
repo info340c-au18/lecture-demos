@@ -6,12 +6,13 @@ console.log(h1);
 h1.text('Hello world!');
 console.log(h1.text())
 
-let ball = $('circle')
-// ball
-//     .attr('cx', 225)
-//     .attr('cy', 95)
-ball.attr({ cx: 225, cy:95 })
 
+let ball = $('circle')
+ // ball
+    // ball.attr('cx', 225)
+     // ball.attr('cy', 95)
+ball.attr({ cx: 225, cy:95 })
+ 
 let buttons = $('button')
 buttons.addClass('btn-success')
 
@@ -25,6 +26,8 @@ console.log(newP)
 $('#text .card-body').append(newP)
 $('#text .card-body').prepend("<p>I'm first!</p>")
 
+
+
 $('img')
     .mouseenter(function(event) {
         $(event.target).attr('src', 'img/surprised.png')
@@ -32,12 +35,12 @@ $('img')
     .mouseleave(function(event) {
         $(event.target).attr('src', 'img/happy.png')
     })
-    // .click(function(){
-    //     if(state.isHappy) {
-    //         $(event.target).attr('src', 'img/surprised.png')
-    //         state.isHappy = false
-    //     }
-    // })
+    //  .click(function(){
+    //      if(state.isHappy) {
+    //          $(event.target).attr('src', 'img/surprised.png')
+    //          state.isHappy = false
+    //      }
+    //  })
 
 h1.click(function(event) {
     $(event.target).slideUp(1000)

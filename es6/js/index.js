@@ -68,6 +68,8 @@ cards.forEach(function(card){
 })
 
 */
+
+/*
 // Example 4
 
 class Card {
@@ -81,6 +83,8 @@ class Card {
         cardDiv.text(this.message + " " + this.clickedCount)
         // here the "this" variable is defined as the card
         // console.log("out of callback", this)
+        
+        
         cardDiv.click(function(){
             //in here the "this" variable is defined as the window (browser)
             // console.log("in callback", this)
@@ -97,13 +101,53 @@ let cards = MESSAGES.map(function(msg, idx) {
     return new Card(msg, idx)
 })
 
+
 cards.forEach(function(card){
      $('#content').append(card.render())
-    
 })
 
+*/
+
 /*
+
+// Example 4a
+
 class Card {
+    constructor(message, initial){
+        this.message = message
+        this.clickedCount = initial
+    }
+
+    render() {
+        let cardDiv = $('<div class="card">')
+        cardDiv.text(this.message + " " + this.clickedCount)
+       
+       // anonomous function changed to arrow function syntax
+        cardDiv.click(() => {
+        console.log("You clicked on "+this.message)
+        })
+
+        return cardDiv
+    }
+  
+}
+
+//main work Example 4
+
+// anonomous function changed to arrow function syntax
+let cards = MESSAGES.map((msg, idx) =>  new Card(msg, idx))
+
+// anonomous function changed to arrow function syntax
+cards.forEach( (card) => {
+     $('#content').append(card.render())
+})
+
+*/ 
+
+
+//Example 5
+
+ class Card {
     
     constructor(message, initial){
         this.message = message
@@ -119,21 +163,12 @@ class Card {
 
     render() {
         this.body.text(this.message + " " + this.clickedCount)
-
-        //this <= the class (Card)
-        console.log("out callback", this);
-
         this.cardDiv.click(() => this.incrementCount())
-
-
         return this.cardDiv
     }
 }
 
 //"main work"
-// let card = new Card("Hello world!");
-// let renderedCard = card.render();
-// $('#content').append(renderedCard)
 
 let cards = MESSAGES.map((msg, idx) => new Card(msg, idx))
 
@@ -142,5 +177,4 @@ cards.forEach((card) => {
 })
 
 
-let foo = (params) => 'foo '+params; 
-*/
+

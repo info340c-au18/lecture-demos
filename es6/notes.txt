@@ -222,6 +222,7 @@ instead of the object
 
 35:52
 SLIDE 14
+Arrow functions
 
 The cleanest way to fix this is to use something called an Arrow function.
 
@@ -244,6 +245,9 @@ return value.
 
 You can take that block of code and have this concise body. More painful to read, but cool.
 
+SLIDE 15
+Arrow functions 2
+
 Further
 if you have single parameter then putting the parenthis is optional 
 
@@ -255,32 +259,47 @@ let foo = () => 'foo '+paramters
 looks like you have a random set of parens floating in space
 
 
-Syntactical transformation
-
----- 
-You should aways be using them particulaly for anonymous callback functions.
+You should aways be using arrow functions particulaly for anonymous callback functions.
 
 Fix scoping issues for the "this"
 
-41:30
+Syntactical transformation
+
+Go back to the map function... turn it into an arrow function.
+
+The way the interpreter looks at arrows is special. They are always called on their
+parent 'this' context. 
+
+the 'this' is the same value. it gets passed automatically.
+
+when we use arrow functions we don't change the value of the this... we can automatically pass in the 'this'.
+
+It's still an anonymous call back. It's a specific kind of an anonymous call back function.
+
+So now when we go back to the cards... the 'this' is correct.
 
 
+SLIDE 18
+ES5 Demo 5
+
+In practice, we might have other things we want to do like have a click count and increment by 1
+So when I click on this card, we can increment
+
+using this.incrementCount()
 
 
+In java if you leave off the "this". it'll look for the variable in the class
+
+In jScript you have to be explicit. it looks for a local variable if you don't put this.
 
 
+Use the arrow syntax
 
+The arrow 'wraps' a function to make sure we get the 'this' passed along
 
+The syntax is annoying, but it works.
 
+SlIDE 19
+Lots to do. 
 
-
-
-
-
-
-
-
-
-
-
-
+The middle problem will be covered in the lab. Ian's gonna do it with you. come to lab

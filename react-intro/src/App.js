@@ -89,13 +89,17 @@ class HelloMessage extends Component {
 
 class Button extends Component {
   render() {
+    console.log(this.props);
     return (
-      <button className="btn btn-primary rounded-circle">Hi</button>
+      <button className="btn btn-primary rounded-circle">{this.props.text}</button>
     )
   }
 }
 export default class App extends Component {
     render() {
+      
+      let buttonLables = [1,2,3];
+      
       return (
         <div>
           <header className="jumbotron">
@@ -103,9 +107,9 @@ export default class App extends Component {
           </header>
           <main>
             <p>
-              <Button text="1"/>
-              <Button text="2"/>
-              <Button text="3"/>
+              <Button text={buttonLables[0]}/>
+              <Button text={buttonLables[1]}/>
+              <Button text={buttonLables[2]}/>
             </p>
           </main>
         </div>

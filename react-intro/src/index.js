@@ -65,7 +65,15 @@ import App from './App'
 ReactDOM.render(<App />, document.getElementById('root'));
 */
 
+/*
 // Example 7
 import App from './App'
 import './style.css'
 ReactDOM.render(<App />, document.getElementById('root'));
+
+*/
+
+//Example 9
+
+import App from './App'
+ ReactDOM.render(<App />, document.getElementById('root'));

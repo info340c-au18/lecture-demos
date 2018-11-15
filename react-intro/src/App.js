@@ -118,7 +118,7 @@ export default class App extends Component {
 */
 
 // Example 9
-import CardList from './cards';
+import CardList from './Cards';
  class HelloMessage extends React.Component {
      makeMessageElement(string) {
         return <h1 id="hello" className="myclass">{string}</h1>

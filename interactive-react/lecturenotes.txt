@@ -1,0 +1,192 @@
+Demo Overview
+
+This is the same TaskList assignment you built previously. Only now
+we're building this with React
+
+SLIDE 10: Demo Overview - re-implementing the TaskList
+
+Let's walk through the basic stuff in the app.js file:
+
+Class App - it renders a container with the classlist and the add taskform (which includes the button)
+
+Class TaskList - does the work to map the taskname array into task components.
+Returns an 'ol' element with all the taskscomponents
+
+Class Task - does the stuff on tasks (strike, toggle strike)
+Returns a task (which includes a onClick handler) in an 'li' element
+
+Class AddTaskForm - Handles to "state" variable for updating when the state var for what's in the edit control
+Also calls a callback up the chain in the app object for actually adding a new task to the tasklist (lifting state) 
+
+
+SLIDE 11
+To make this interactive we need to deal with a few concepts:
+
+Events  (like onclick, onfocus, on change, etc)
+Accessing the 'this' from an event callback function (using arrow functions or "public class fields")
+State and State vs Props
+How to change state (use setState())
+Implication that setState() is asynchronous
+Lifting State (Example - how does the tasklist know to refresh when task is added to task ( a sibling) form?)
+
+
+SLIDE 12
+Events:
+Synthetic events - onClick, onFocus, onChange etc...
+The chapter has a link to the React Synthetic events. Link to info in Section 21.1 of the course book. 
+
+We add user interaction the same in React as in DOM and jQuery
+
+We register and event listener and specify a callback function to execute when the event fires
+
+There is still an event object that is passed when the event fires.
+
+You can only register the Synthetic Events (like onClick) on HTML Elements, not the Components that
+you built
+
+Complications here are how to access the "this" Component from events
+It's very common to have a Component's event callback function need to reference
+the instance variables or methods of the component (like with the prop, or other helper methods). 
+The event callback will usually need to have access to the 'this' context
+
+This is now why you can see why we spent time going over arrow functions. This is one place
+where you will need to have access to the 'this' context 
+
+Note in slide 12, we aren't using an Arrow function and if the callback 'doSomething' tried to actually use
+the this context, it would throw the error that its undefined.
+
+
+
+SLIDE 13
+Retaining this
+
+You likely remember we get the cool property with arrow functions that they inherit the parent 'this' context
+allowing access to the access the props for the this object.
+
+Here we see that we can wrap the calling of the callback in an arrow and it works
+
+SLIDE 14 
+Retaining this
+
+The other option is to use a a public Class fields
+It's an experimental JavaScript syntax currently being considered for official inclusion in the JavaScript language.
+However we're writing in JSX which isn't javascript and we are using the Babel transpiler to convert to js and it
+supports this syntax. So we can use it.
+
+There is perhaps a benefit this method for perf reasons because the function isn't instantiated again each time they
+render method is called which it is when the anonomous function is included (wrapped in an arrow function).
+
+
+SLIDE 15
+Demo - onClick - clicking on task in the task listener
+
+Notice that we register the onClick handler here where we are intatiating the task in the return() method
+
+Each task has it's own onClick handler (as is necessary)
+
+We're handling the 'this' issue by usng a public class field (handleClick) which is a public class 
+
+
+SLIDE 16
+Demo onClick on the Form button
+
+Again we register the onClick handler where we are intantiating the button on the form in the return() method
+
+Again 'handleClick' is a public class field which means we get the 'this' context passed along
+
+Notice that we are using the prop 'this.how.ToAdd' to actually add the task... 
+AND this prop was set in the parent 'app' object.  There is a method called 'AddTask()' which is 
+set in the app render() method and passed in with the 'this' context because it is also a public field class
+
+More on why we bother to this 'addtask' in the 'app' rather than in the 'task' object in a bit 
+
+
+SLIDE 17
+React Props
+
+Props are the components configuration. They are immutable as far as the Component receiving them is concerned.
+
+A Component cannot change its props. Each component is responsible to put together its child components
+
+You access props through the 'this.props.propname'
+
+
+SLIDE 18
+
+React State
+
+State is where we can keep track of state data of interactive information. It should only keep track of data
+that changes over time.
+
+For example - Timers, sort order, which model data is showing... selected filters... things that users can alter.
+
+
+SLIDE 19
+Using State
+
+To use state you have to do this:
+
+Call the constructor with 'props' as an argument
+within the constructor 
+- Call the 'super' superclass constructor - super(props)
+- Assign a value to a state instance. This again must be assigned as an object
+
+
+To access state it is similar to accessing 'props', the syntax is: 'this.state.statename'
+
+Here's a test to see if a variable should be state... if it isn't accessed in the render() method,
+it shouldn't be in state.
+
+
+SLIDE 20
+Changing State
+
+React state is changed asynchronously
+
+We only change state using the this.setState() method, and we pass in the object reflecting which
+state variables changes should happen. 
+
+For example look at the handleClick code. we pass in the stateChanges object which is an object 
+{count: 1}
+
+Only change the state parameters that need to be updated. stateChanges() merges those changes into 
+the state object
+
+stateChanges() automatically renders the Component using the render() method
+
+
+SLIDE 21
+setSTate() is asynchronous
+
+The updated state will only be available when the render() function returns...
+
+This means that there is potential for bugs or weird behavior if you don't do something to handleClick
+
+See the comment //still 0! it hasn't changed yet
+
+For example if you have iterative lines of code that increments a state counter, it is likely that 
+the state won't return from render() before the next line of code re-renders
+
+
+
+
+SLIDE 22
+setState is asynchronous (2)
+
+The solution to this is to pass a callback function as an argument (instead of an object of new values)
+The callback function will be passed the "current" state (and props), and must return the object that
+you want merged into the state.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

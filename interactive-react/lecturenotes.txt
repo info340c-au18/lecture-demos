@@ -179,14 +179,65 @@ you want merged into the state.
 
 
 
+Do not call setState directly within render(), you'll get into an infinite loop
+
+look at the togglecomplete() method an example dealing with this
+
+SLIDE 23
+Lifting Up State
 
 
+In React component state is internal to the component -- the parent, siblings, children don't know the state of
+the other Components
+
+But parents can make information available to children through parents
+
+This is how we are able to "communicate" state from parent to child
+
+So how do we communicate state from sibling to sibling ... like the issue we have in our demo?
+We have the TaskList component and the Form component which are siblings
+When the Form has a new task to add to the Tasklist, how can it communicate that the state has changed?
+
+We move the "state" up to the parent from the child (siblings) so that when something in the child
+causes state to change, it's actually updated in the parent, who then can notify all of the children (siblings)
+that they need to refresh
+
+SLIDE 24
+Passing Callbacks
+
+This is done by having the parent function pass a callback function as a prop the child to execute
+Make sure you use an arrow function to bind the this (handle the 'this')
+
+On this slide you can see how to do it
+
+MyButton is the child of App
+So we put the handleClick as a prop (function) in the app component (parent)
+
+Then we can pass the function to MyButton in the render() function as a prop
+
+You can see how this is then handled in the MyButton Class
+Rather than running a local method, it can run the prop function which is in the parent
+and thus state is stored in the parent
+
+This function can be registered with the onClick event like any other function
+
+SLIDE 25 (and 26)
+
+Here's how we did it in the demo
+
+The app (parent) now has the addTask method rather than the TaskList (child)
 
 
+The method is passed on render to the TaskForm as a prop
 
 
+SLIDE 26
 
+And this is how the TaskForm handles it
+a variable handleClick is created to preventDefault() and to call the parent AddTask function
+that was passed in as a prop.
 
+This method is registered with the onClick event
 
 
 

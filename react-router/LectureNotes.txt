@@ -253,34 +253,48 @@ Here "PostID" is the variable
 
 NOthing renders because there are no props passed
 
-54:40
+Following our normal process, you might think we pass the props in the component=
+part of the statement
 
-This example takes some work to understand
+But we don't 
+
+SLIDE 19
+Example: Using that variable from the URI
+
+We can use the "this.props.match.params.postID" variable
+
+This is just another prop
+
+
+SLIDE 20
+Here's an example in the demo where we are actually using the postID variable we
+created to specify which blog post to render
+
+Think of these things as "if" statements
+
+When the URL is something, what do I want to display
+
+
+SLIDE 21
+
 
 "links"
 
+The reason the links refresh the page
+
+Anchor elements take you to the web page and causes the refresh
+
+Make it so that when clicking the link... we'd rather just changes
+the URL and rerender the component
 
 
+While specifying <Route> elements will allow you to show different “pages” at different URLs, in order for a Single Page Application to function you need to be able to navigate between routes without causing the page to reload. Thus you can’t just use normal <a> elements to link between “pages”—browsers interpret clicking on <a> elements as a command to send a new HTTP request, and you instead just want to change the URL and re-render the App.
 
+Instead, React Router provides a <Link> element that you can use to create a hyperlink to another route within the application. This component takes to prop that you use to specify the route that it links to:
 
+The component will render as an <a> element with a special onClick handler that keeps the browser from loading a new page. Thus you can specify an content that you would put in the <a> (such as the hyperlink text) as child content of the <Link>.
 
+If you look at what actually happens in the console,
+the anchor tag does eventually get written, but a bunch of other stuff happens that hijack
+the normal flow. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-React by default has 3 dependencies
-
-
-
-When you 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {BrowserRouter, Route, Switch, Link, NavLink} from 'react-router-dom';
 
 const BLOG_POSTS = { //model for demoing
   '2018-11-18':"Still no sleep...",
@@ -31,7 +30,6 @@ class App extends Component {
     });
 
     return (
-      <BrowserRouter>
       <div className="container">
         <h1>My Blog</h1>
         <nav>
@@ -48,19 +46,10 @@ class App extends Component {
             {postLinks}
           </ul>
         </nav>
-        
-        {/*<Route path = '/about' component={AboutPage} /> */}
-        
-        {/*<WelcomePage />
-        
-        <BlogPostList posts={this.state.posts} /> */}
-
         <WelcomePage />
         <AboutPage />
-        <Route path='/blog' render={BlogPostList} />
-      
+        <BlogPostList posts={this.state.posts} />
       </div>
-      </BrowserRouter>
     );
   }
 }

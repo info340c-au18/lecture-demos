@@ -199,6 +199,67 @@ So if you have a '/' at the top, you probably won't drop into any of the other o
 That's the way to think of it.
 
 
+SLIDE 15
+Tricky part is getting props to the component in <route>
+
+The most confusing thing about reactrouter... 
+
+
+<Route path="/blog" component={BlogPostList} />
+
+We're not passing in the prop... how do we get these props into this route?
+
+
+It crashed... we get a null error
+
+40:31
+
+use the render prop rather than the component
+
+create a new function to be a call back
+
+that you pass with the "render"
+
+set the posts=this.state.posts
+
+SLIDE 16
+Props passed to the callback from "render"
+
+...routerProps - to also get the existing routerProps that was passed in
+it's called "spreading" or destructuring
+
+This is an ES6 feature.
+It's doing the work of creating all the individual variables and pass them all
+It takes the keys for all those objects and make them the prop names and assign the values
+
+
+use render whenever you want to pass your own props
+
+use component whenever you can
+but you have to use render if you need to provide your own props
+
+
+How do we get other parameters from the URL?
+
+SLIDE 17
+API URIs
+Inside of a URI there are parameters. 
+
+We can use this same structure when specifying a route that we want to show
+
+SLIDE 18
+
+Here "PostID" is the variable
+
+NOthing renders because there are no props passed
+
+54:40
+
+This example takes some work to understand
+
+"links"
+
+
 
 
 

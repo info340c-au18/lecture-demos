@@ -22,7 +22,6 @@ export default class SignUpForm extends Component {
         this.setState({user: null})
       }
     })
-
   }
 
   componentWillUnmount() {

@@ -8,13 +8,13 @@ import 'firebase/auth';
 
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyCTDzxqSCqCZzGzgycdar3lZqOP7_wzHz0",
-    authDomain: "info340-firebase-demo.firebaseapp.com",
-    databaseURL: "https://info340-firebase-demo.firebaseio.com",
-    projectId: "info340-firebase-demo",
-    storageBucket: "info340-firebase-demo.appspot.com",
-    messagingSenderId: "372293487980"
-  };
+  apiKey: "AIzaSyDRmtNehNCpXLcP3kbMX8rEYwYXsWrb8zI",
+  authDomain: "info340c-au18-demo.firebaseapp.com",
+  databaseURL: "https://info340c-au18-demo.firebaseio.com",
+  projectId: "info340c-au18-demo",
+  storageBucket: "info340c-au18-demo.appspot.com",
+  messagingSenderId: "411543237771"
+};
 firebase.initializeApp(config);
 
 ReactDOM.render(<App />, document.getElementById('root'));

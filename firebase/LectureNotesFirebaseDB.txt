@@ -1,0 +1,157 @@
+LectureNotes FireBase - DB
+
+SLIDE 4 ---------------------
+Think of Firebase database as being JSON in the cloud
+
+We will be able to add new elements to this JSON db in the cloud
+as if it were local
+
+GOTO the firebase DB and walk through the staps
+
+NOTICE the Left Nav and pick Database
+
+Scroll down to real time - Click the giant blue DB button to create a DB
+
+Start in Test mode 
+
+Notice you don't have any data in your JSON object yet, but it's there.
+
+1- real-time database
+2- can be simultaneously accessed by mutlipe clients
+3- can be edited, modified, added to, deleted from and viewed directly from console
+4- each element of JSON object is accessible via AJAX requests
+
+Show how you can add add
+Click the + button 
+
+message: hello world
+
+more complicated
+teacher
+    name: prof ross
+
+task
+    description: use firebase
+
+Can change these in the the console
+
+Colors change when you alter, delete, add
+
+SLIDE 5 ------------
+Firebase Realtime Database
+
+See how you database object can be represented in your js file on Left
+and how it would look in the firebase object 
+
+these are the essentially the same thing
+
+
+SLIDE 6 --------------------------
+
+Firebase Database Security Rules
+
+We set our DB up in test mode which sets read/write to true
+
+Credentialing is important since all elements are easily accessible via AJAX requests
+
+
+SLIDE 7 -----------------------
+App.js : Review the tasklist demo code
+
+Let's review the Tasklist code. You've gone through it a couple times, but Lets 
+quickly look at the basics so it's easier to see what we do differently 
+with the firebase integration
+
+In app.js
+
+we import the signupform and taskapp components
+as well as the firebase/app object
+
+in the constructor we have a state variable to keep track of which user (if any)
+is logged in
+
+In the componentDidMount() we add the listener for changes to who's logged in
+
+We remove the listener when the component is removed
+
+We have an if statement to conditionally show the login component if no user 
+is logged on. Otherwise we show the <taskapp> component.
+
+SLIDE 8 ----------------------
+
+Tasks.js Part 1 (it's broken into 5 slides)
+
+We import the signup and taskapp components
+
+We have a stage variable (here is't an array) that we store in state
+
+Currently there's an empty componentDidMount() to load data
+
+We have an empty addTask method (for now)
+
+
+SLIDE 9 --------------------------
+
+Tasks.js Part2
+
+We have the empty toggleComplete() method 
+
+We render() the app in which we return a TaskList() with two props:
+The tasks and a callback "howToToggle"
+And the AddTaskForm with a callback "howToAdd"
+
+
+SLIDE 10 -------------------------
+
+Tasks.js part3
+
+We have the taskList component
+
+Which walks the task array instantiating each task in the list 
+
+
+
+SLIDE 11 --------------------------
+
+Tasks.js Part4
+
+We have the Task component
+
+There's a helper method which will set "className" to fon-strike if the
+task toggleComplete
+
+We have a handleClick method which is passed as a prop for "onClick"
+
+It returns a task with font-strike className if appropriate
+
+
+SLIDE 12 -------------------------------
+
+Tasks.js Part5
+
+We have the AddTaskForm component
+
+We have a onChange callback method
+
+The form is hijacked so that we can have React handle the default behavior
+
+The form has handlers for onChange and onClick
+
+
+SLIDE 13 ---------------------
+
+Now let's walk through the things to get the TAsklist working with firebase db
+
+
+SLIDE 14 -------------------------
+
+in index.js we need to include the firebase/database module
+
+
+
+
+
+
+
+
+

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import firebase from 'firebase/app'
 
+/*
 let jitc = {
   "exampleTask": {
     description: "",
@@ -12,6 +13,7 @@ let jitc = {
     "-LSQlb": {},
   }
 }
+*/
 
 export default class TaskApp extends Component {
   constructor(props){

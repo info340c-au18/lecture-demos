@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-
-import { Collapse, Button, CardBody, Card } from 'reactstrap';
-
 import {BrowserRouter, Route, Switch, Link, NavLink} from 'react-router-dom';
-
 
 const BLOG_POSTS = { //model for demoing
   '2018-11-18':"Still no sleep...",
@@ -15,7 +11,7 @@ const BLOG_POSTS = { //model for demoing
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = {posts: [], collapse:false} //added the collapse state property for tracking collapse
+    this.state = {posts: []}
   }
 
   componentDidMount() {
@@ -24,54 +20,27 @@ class App extends Component {
       posts: BLOG_POSTS
     })
   }
-
- // toggle callback for collapse() below 
-  toggle = () => {
-    this.setState((currentState) => {
-      return { collapse: !currentState.collapse }
-    });
-  }
-
   renderBlogList = (routerProps) => {
     //return thing I want to render
     return <BlogPostList {...routerProps} posts={this.state.posts} />
   }
-
-
   render() {
     let postLinks = Object.keys(this.state.posts).map((date) => {
       return (
         <li key={date}>
-          <Link 
-            to={'/blog/posts/'+date} 
-            className="nav-link" 
-            >{date}</Link>
+          <a href={'/blog/posts/'+date} className="nav-link">{date}</a>
         </li>
       )
     });
 
     return (
-      <BrowserRouter >
+      <BrowserRouter>
       <div className="container">
         <h1>My Blog</h1>
-
-          {/* code from reactstrap documentation */}
-          <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Toggle</Button>
-          <Collapse isOpen={this.state.collapse}>
-          <Card>
-            <CardBody>
-            Anim pariatur cliche reprehenderit,
-             enim eiusmod high life accusamus terry richardson ad squid. Nihil
-             anim keffiyeh helvetica, craft beer labore wes anderson cred
-             nesciunt sapiente ea proident.
-            </CardBody>
-          </Card>
-        </Collapse>        
-
         <nav>
           <ul className="nav">
             <li>
-              <Link exact to='/' className="nav-link" >Home</Link>
+              <a href='/' className="nav-link">Home</a>
             </li>
             <li>
               <a href='/about' className="nav-link">About</a>
@@ -82,20 +51,18 @@ class App extends Component {
             {postLinks}
           </ul>
         </nav>
-
-        {/* Main Content */}
-
-      <Switch>
-          <Route exact path="/" component={WelcomePage} />
-          <Route path="/about" component={AboutPage} />
-          <Route exact path="/blog" render={this.renderBlogList} />
-          <Route path="/blog/posts/:postId" component={BlogPost} />
-        </Switch>
-        {/* <WelcomePage />
-        <AboutPage />
+        
+        {/*<Route path = '/about' component={AboutPage} /> */}
+        
+        {/*<WelcomePage />
+        
         <BlogPostList posts={this.state.posts} /> */}
-      </div> 
 
+        <WelcomePage />
+        <AboutPage />
+        <Route path='/blog' render={BlogPostList} />
+      
+      </div>
       </BrowserRouter>
     );
   }
@@ -123,8 +90,6 @@ class AboutPage extends Component {
 
 class BlogPostList extends Component {
   render() {
-    console.log(this.props)
-
     let postItems = Object.keys(this.props.posts).map((date) => {
       return <BlogPost key={date} date={date} post={this.props.posts[date]} />
     })
@@ -134,25 +99,10 @@ class BlogPostList extends Component {
 }
 
 class BlogPost extends Component {
-  constructor(props){
-    super(props);
-    this.state = {post: ""}
-  }
-
-  componentDidMount() {
-    if(this.props.match && this.props.match.params.postId) {
-      //fetch it from server
-      this.setState({post: BLOG_POSTS[this.props.match.params.postId]})
-    }
-  }
-
   render() {
 
-    console.log(this.props)
-
-    let date = this.props.date || this.props.match.params.postId;    
-    let post = this.props.post || BLOG_POSTS[this.props.match.params.postId]; //this.state.post  
-   // let post = this.props.post ||  this.state.post ;
+    let date = this.props.date;    
+    let post = this.props.post;
 
     return (
       <div>
